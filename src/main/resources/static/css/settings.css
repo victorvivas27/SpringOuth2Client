@@ -1,0 +1,123 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #4A90E2;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #357ABD;
+    border-radius: 5px;
+}
+
+/* Settings Section */
+.settings-section {
+    padding: 20px;
+    background-color: #fff;
+    min-height: 80vh;
+}
+
+.settings-header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.settings-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.setting-item input,
+.setting-item select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.setting-item input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.setting-item button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4A90E2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.setting-item button:hover {
+    background-color: #357ABD;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    background-color: #4A90E2;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px;
+}
+/* Estilo del botón Cerrar Sesión en la navbar */
+.navbar .logout-btn {
+    color: #fff;
+    background-color: #D9534F; /* Rojo para resaltar */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .logout-btn:hover {
+    background-color: #C9302C; /* Rojo más oscuro al pasar el mouse */
+}

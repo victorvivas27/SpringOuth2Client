@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Fotos</title>
+    <link href="/css/fotos.css" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="/">Inicio</a>
+    <a href="/profile">Perfil</a>
+    <a href="/fotos">Fotos</a>
+    <a href="/videos">Videos</a>
+    <a href="/settings">Configuración</a>
+    <!-- Ternario para Login / Logout -->
+    <a th:href="@{${#authentication != null} ? '/logout' : '/login'}"
+       th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
+
+</nav>
+
+<!-- Main Section -->
+<section class="photos-section">
+    <div class="photos-header">
+        <h1>Galería de Fotos</h1>
+    </div>
+
+    <div class="photos-gallery">
+        <div class="photo-item">
+            <img alt="Foto 1" src="https://via.placeholder.com/300x200/FF5733/ffffff?text=Foto+1">
+            <p>Descripción de la foto 1</p>
+        </div>
+        <div class="photo-item">
+            <img alt="Foto 2" src="https://via.placeholder.com/300x200/33A1FF/ffffff?text=Foto+2">
+            <p>Descripción de la foto 2</p>
+        </div>
+        <div class="photo-item">
+            <img alt="Foto 3" src="https://via.placeholder.com/300x200/75FF33/ffffff?text=Foto+3">
+            <p>Descripción de la foto 3</p>
+        </div>
+        <div class="photo-item">
+            <img alt="Foto 4" src="https://via.placeholder.com/300x200/F7E533/ffffff?text=Foto+4">
+            <p>Descripción de la foto 4</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

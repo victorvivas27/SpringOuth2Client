@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login y Registro</title>
+    <link href="/css/login.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<main class="container">
+    <!-- Sección del Login -->
+    <section class="form-section">
+        <h1>Iniciar Sesión</h1>
+        <form action="/signin" class="form-login" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input id="password" name="password" required type="password">
+            </div>
+            <button class="btn-login" type="submit">Iniciar sesión</button>
+        </form>
+    </section>
+
+    <!-- Sección del Registro -->
+    <section class="form-section">
+        <h1>Registrarse</h1>
+        <form action="/register" class="form-login" enctype="multipart/form-data" id="registerForm" method="POST">
+            <div class="form-group">
+                <label for="name">Nombre Completo</label>
+                <input id="nameRegister" name="name" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="picture">Avatar</label>
+                <input accept="image/*" id="pictureRegister" name="picture" required type="file">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="emailRegister" name="email" required type="text">
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input id="passwordRegister" name="password" required type="password">
+            </div>
+            <button class="btn-login" type="submit">Registrar</button>
+        </form>
+    </section>
+</main>
+
+<!-- Footer con botones sociales -->
+<footer class="social-login">
+    <div class="button-container">
+        <a class="btn-google" href="/oauth2/authorization/google">
+            <i class="fab fa-google"></i> Iniciar sesión con Google
+        </a>
+        <a class="btn-github" href="/oauth2/authorization/github">
+            <i class="fab fa-github"></i> Iniciar sesión con GitHub
+        </a>
+    </div>
+</footer>
+<script src="/js/userRegister.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
