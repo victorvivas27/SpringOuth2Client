@@ -1,38 +1,4 @@
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f9;
-    color: #333;
-}
 
-/* Navbar */
-.navbar {
-    background-color: #4A90E2;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 5px 15px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar a:hover {
-    background-color: #357ABD;
-    border-radius: 5px;
-}
 
 /* Profile Section */
 .profile-section {
@@ -41,7 +7,7 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .profile-header h1 {
@@ -79,30 +45,7 @@ body {
     color: #4A90E2;
 }
 
-/* Footer */
-.footer {
-    text-align: center;
-    background-color: #4A90E2;
-    color: #fff;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    margin-top: 20px;
-    font-size: 14px;
-}
-/* Estilo del botón Cerrar Sesión en la navbar */
-.navbar .logout-btn {
-    color: #fff;
-    background-color: #D9534F; /* Rojo para resaltar */
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
 
-.navbar .logout-btn:hover {
-    background-color: #C9302C; /* Rojo más oscuro al pasar el mouse */
-}
+
+
+

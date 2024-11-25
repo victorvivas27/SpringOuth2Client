@@ -5,8 +5,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Perfil de Usuario</title>
     <link href="/css/profile.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
 <!-- Navbar -->
 <nav class="navbar">
     <a href="/">Inicio</a>
@@ -18,7 +22,7 @@
     <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
        th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
 </nav>
-
+    <main>
 <!-- Main Section -->
 <section class="profile-section">
     <div class="profile-header">
@@ -40,11 +44,12 @@
         </div>
     </div>
 </section>
-
+    </main>
 
 <!-- Footer -->
 <footer class="footer">
     <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
 </footer>
+    </div>
 </body>
 </html>

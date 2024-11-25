@@ -1,46 +1,51 @@
-/* Estilo general */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+/* Estilos generales */
+.body-signin {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f9;
+    margin: 10px;
 }
 
 /* Contenedor principal */
-.container {
+.main-container-signin {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
     max-width: 1200px;
-    background: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-/* Secciones de formulario */
+/* Sección de formulario */
 .form-section {
-    width: 48%; /* Para mantener proporción */
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Encabezados */
-h1 {
-    font-size: 22px;
-    text-align: center;
+.form-section h1 {
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #6200ea;
+    text-align: center;
 }
 
 /* Formularios */
 .form-login {
+    width: 100%;
     background-color: #e3f2fd;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 #registerForm {
@@ -77,6 +82,7 @@ input {
 
 /* Footer */
 footer.social-login {
+    margin: 20px;
     text-align: center;
     padding: 20px;
     background-color: #fff;
@@ -102,13 +108,21 @@ footer.social-login {
 }
 
 .btn-github {
-    background-color: #333;
+    background-color: #000000;
 }
+.fa-github{
+    font-size: 30px;
+    color: #ccc;
+}
+.fa-google{
+    font-size: 30px;
+}
+
 /* Contenedor principal del avatar */
 .avatar-upload {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border: 2px dashed #ccc;
     border-radius: 50%;
     background-color: #f4f4f9;
@@ -161,4 +175,13 @@ footer.social-login {
 /* Ocultar la imagen por defecto */
 .hidden {
     display: none;
+}
+
+/* Media Query: Adaptación a pantallas más pequeñas */
+@media (min-width: 768px) {
+
+    .form-section {
+        width: 48%;  /* Hacer que los formularios ocupen el 48% del ancho en pantallas grandes */
+        margin-bottom: 0;  /* Eliminar margen inferior para alinearlos mejor */
+    }
 }

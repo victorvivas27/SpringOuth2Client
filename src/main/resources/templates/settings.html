@@ -5,8 +5,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Configuración</title>
     <link href="/css/settings.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
 </head>
 <body>
+
 <!-- Navbar -->
 <nav class="navbar">
     <a href="/">Inicio</a>
@@ -14,47 +18,14 @@
     <a href="/fotos">Fotos</a>
     <a href="/videos">Videos</a>
     <a href="/settings">Configuración</a>
-    <!-- Ternario para Login / Logout -->
     <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
        th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
 </nav>
-
-<!-- Main Section -->
-<section class="settings-section">
-    <div class="settings-header">
-        <h1>Configuración de Cuenta</h1>
-    </div>
-
-    <div class="settings-content">
-        <form>
-            <div class="setting-item">
-                <label for="theme">Tema</label>
-                <select id="theme" name="theme">
-                    <option value="light">Claro</option>
-                    <option value="dark">Oscuro</option>
-                </select>
-            </div>
-
-            <div class="setting-item">
-                <label for="email-notifications">Notificaciones por Email</label>
-                <input id="email-notifications" name="email-notifications" type="checkbox">
-            </div>
-
-            <div class="setting-item">
-                <label for="password">Cambiar Contraseña</label>
-                <input id="password" name="password" placeholder="Nueva contraseña" type="password">
-            </div>
-
-            <div class="setting-item">
-                <button type="submit">Guardar Configuración</button>
-            </div>
-        </form>
-    </div>
-</section>
-
+   
 <!-- Footer -->
 <footer class="footer">
     <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
 </footer>
+   
 </body>
 </html>

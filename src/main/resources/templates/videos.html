@@ -4,47 +4,28 @@
     <meta charset="UTF-8">
     <title>Página Principal</title>
     <link href="/css/index.css" rel="stylesheet">
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
+    
 </head>
 <body>
-<div class="container">
-    <!-- Navbar -->
+<!-- Navbar -->
     <nav class="navbar">
         <a href="/">Inicio</a>
         <a href="/profile">Perfil</a>
         <a href="/fotos">Fotos</a>
         <a href="/videos">Videos</a>
         <a href="/settings">Configuración</a>
-        <!-- Ternario para Login / Logout -->
         <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
            th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Sección de Videos -->
-        <section class="article-section">
-            <h2>Video 1: Introducción al Tema</h2>
-            <p class="article-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac arcu ut dui
-                facilisis tincidunt. Integer eget augue sem.</p>
-        </section>
-
-        <section class="article-section">
-            <h2>Video 2: Desarrollo del Tema</h2>
-            <p class="article-content">Cras gravida turpis ac risus porttitor, ac tempor ante interdum. Integer sit amet
-                sapien urna. Nam volutpat augue ac felis cursus, non ultricies purus lacinia.</p>
-        </section>
-
-        <section class="article-section">
-            <h2>Video 3: Conclusión</h2>
-            <p class="article-content">Sed viverra sollicitudin eros, sed euismod purus aliquam in. Donec sit amet
-                ligula ut ligula dictum dignissim.</p>
-        </section>
-    </main>
+   
 
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
     </footer>
-</div>
+
 </body>
 </html>
