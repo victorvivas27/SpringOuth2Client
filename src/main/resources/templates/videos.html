@@ -6,26 +6,25 @@
     <link href="/css/index.css" rel="stylesheet">
     <link href="/css/navbar.css" rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet">
-    
+
 </head>
 <body>
 <!-- Navbar -->
-    <nav class="navbar">
-        <a href="/">Inicio</a>
-        <a href="/profile">Perfil</a>
-        <a href="/fotos">Fotos</a>
-        <a href="/videos">Videos</a>
-        <a href="/settings">Configuración</a>
-        <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
-           th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
-    </nav>
+<nav class="navbar">
+    <a href="/">Inicio</a>
+    <a href="/profile">Perfil</a>
+    <a href="/fotos">Fotos</a>
+    <a href="/videos">Videos</a>
+    <a href="/settings">Configuración</a>
+    <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
+       th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
+</nav>
 
-   
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
-    </footer>
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
+</footer>
 
 </body>
 </html>
