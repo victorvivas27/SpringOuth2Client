@@ -5,25 +5,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = document.querySelector("#emailRegister");
     const picture = document.querySelector("#pictureRegister");
     const password = document.querySelector("#passwordRegister");
+    
+    document.getElementById("pictureRegister").addEventListener("change", function () {
+        const file = this.files[0];
+        const avatarPreview = document.getElementById("avatarPreview");
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                avatarPreview.src = e.target.result;
+                avatarPreview.classList.remove("hidden");
+            };
+            reader.readAsDataURL(file);
+        } else {
+            avatarPreview.src = "";
+            avatarPreview.classList.add("hidden");
+        }
+    });
 
     // Asigna el evento al formulario de registro
     formulario.addEventListener("submit", function (event) {
         event.preventDefault();
         // Datos del usuario
-        const userData = {
-            name: name.value,
-            email: email.value,
-            picture: picture.value,
-            password: password.value,
-        };
-        console.log("Datos del usuario:", userData);
-
+      // Crear el objeto FormData
+      const formData = new FormData();
+      formData.append("name", name.value);
+      formData.append("email", email.value);
+      formData.append("password", password.value);
+      formData.append("file", picture.files[0]); // Captura el archivo
+        console.log("Datos del usuario:",formData );
         const setting = {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json; charset=UTF-8',
-            },
-            body: JSON.stringify(userData),
+           body: formData,
         };
         console.log(setting);
         realizaRegistro(setting);

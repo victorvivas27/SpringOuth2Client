@@ -1,32 +1,49 @@
 package com.oauth.controller;
 
+import com.amazonaws.auth.policy.Resource;
 import com.oauth.service.AWSS3Service;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/s3")
-@AllArgsConstructor
+
 public class UploadFileController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UploadFileController.class);
     private final AWSS3Service awss3Service;
+    @Value("${aws.s3.bucket-name}")
+    private String bucketName;
+    @Value("${aws.s3.region}")
+    private String region;
+    public UploadFileController(AWSS3Service awss3Service) {
+        this.awss3Service = awss3Service;
+    }
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestPart(value = "file") MultipartFile file) {
-        awss3Service.uploadFileToS3(file);
-        String response = "El archivo" + file.getOriginalFilename() + "fue cargado correctamente a S3";
-        return new ResponseEntity<String>(response, HttpStatus.OK);
+    public ResponseEntity<Map<String, String>> uploadFile(@RequestPart(value = "file") MultipartFile file) {// Subir el archivo a S3 y obtener el nuevo nombre
+        String fileName = awss3Service.uploadFileToS3(file);
+        String fileUrl = "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + fileName;
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Archivo subido correctamente a S3");
+        response.put("fileUrl", fileUrl);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/listeFile")
@@ -36,31 +53,9 @@ public class UploadFileController {
 
     @GetMapping("/download")
     public ResponseEntity<?> download(@RequestParam("key") String key) {
-        LOGGER.info("Attempting to download file with key: {}", key);
-        if (!awss3Service.doesObjectExist(key)) {
-            LOGGER.warn("File not found in S3: {}", key);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("File not found: " + key);
-        }
-        InputStream inputStream = awss3Service.downloadFile(key);
-        InputStreamResource resource = new InputStreamResource(inputStream);
-        String contentDisposition = "attachment; filename=\"" + key + "\"";
-        MediaType contentType = getContentTypeFromExtension(key);
+        InputStreamResource resource = new InputStreamResource(awss3Service.downloadFile(key));
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
-                .contentType(contentType)
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + key + "\"")
                 .body(resource);
-    }
-
-    private MediaType getContentTypeFromExtension(String key) {
-        if (key.endsWith(".png")) {
-            return MediaType.IMAGE_PNG;
-        } else if (key.endsWith(".jpg") || key.endsWith(".jpeg")) {
-            return MediaType.IMAGE_JPEG;
-        } else if (key.endsWith(".pdf")) {
-            return MediaType.APPLICATION_PDF;
-        } else {
-            return MediaType.APPLICATION_OCTET_STREAM; // Tipo por defecto
-        }
     }
 }

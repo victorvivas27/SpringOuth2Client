@@ -2,6 +2,7 @@ package com.oauth.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
+import com.oauth.exception.FileNotFoundException;
 import com.oauth.interfaces.AWSS3Interface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,23 +22,27 @@ public class AWSS3Service implements AWSS3Interface {
     private final AmazonS3 amazonS3;
     @Value("${aws.s3.bucket-name}")
     private String bucketName;
-
+    @Value("${aws.s3.region}")
+    private String region;
     public AWSS3Service(AmazonS3 amazonS3) {
         this.amazonS3 = amazonS3;
     }
 
     @Override
-    public void uploadFileToS3(MultipartFile file) {
-        File uploadFile = new File(file.getOriginalFilename());
-        try (FileOutputStream stream = new FileOutputStream(uploadFile)) {
-            stream.write(file.getBytes());
-            String newFilename = System.currentTimeMillis() + "_" + uploadFile.getName();
-            PutObjectRequest request = new PutObjectRequest(bucketName, newFilename, uploadFile);
-            amazonS3.putObject(request);
+    public String uploadFileToS3(MultipartFile file) {
+        try {
+            String newFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(file.getSize());
+            metadata.setContentType(file.getContentType());
+            amazonS3.putObject(new PutObjectRequest(bucketName, newFilename, file.getInputStream(), metadata));
+            return "https://" + bucketName + ".s3." + region + ".amazonaws.com/" + newFilename;
         } catch (IOException e) {
-            LOGGER.error(e.getMessage(), e);
+            LOGGER.error("Error al cargar el archivo a S3", e);
+            throw new RuntimeException("Error al cargar el archivo a S3", e);
         }
     }
+
 
     @Override
     public List<String> getObjectFromS3() {
@@ -49,25 +54,25 @@ public class AWSS3Service implements AWSS3Interface {
         return list;
     }
 
+
     @Override
     public InputStream downloadFile(String key) {
+        if (!doesObjectExist(key)) {
+            throw new FileNotFoundException("File " + key + " does not exist");
+        }
         S3Object object = amazonS3.getObject(bucketName, key);
         return object.getObjectContent();
     }
+
 
     public boolean doesObjectExist(String key) {
         try {
             return amazonS3.doesObjectExist(bucketName, key);
         } catch (AmazonS3Exception e) {
-            // Maneja cualquier error relacionado con S3
-            System.err.println("Error checking if object exists in S3: " + e.getMessage());
+
             return false;
         } catch (Exception e) {
-            // Maneja cualquier otro error inesperado
-            System.err.println("Unexpected error: " + e.getMessage());
             return false;
         }
     }
-
-
 }

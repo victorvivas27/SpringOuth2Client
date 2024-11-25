@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public interface AWSS3Interface {
-    void uploadFileToS3(MultipartFile file);
+    String uploadFileToS3(MultipartFile file);
 
     List<String> getObjectFromS3();
 

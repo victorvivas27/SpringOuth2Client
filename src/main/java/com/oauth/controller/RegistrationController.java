@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +20,14 @@ public class RegistrationController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> register(@RequestBody User user) {
+    public ResponseEntity<Map<String, String>> register(
+            @ModelAttribute User user,
+            @RequestPart(value = "file") MultipartFile file) {
         try {
-            User savedUser = userService.userSave(user);
+            User savedUser = userService.userSave(user, file);
             Map<String, String> response = new HashMap<>();
             response.put("message", "Usuario registrado correctamente con ID: " + savedUser.getId());
+            response.put("fileUrl", savedUser.getPicture());
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (IllegalArgumentException e) {
             Map<String, String> errorResponse = new HashMap<>();

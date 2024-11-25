@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Login y Registro</title>
-    <link href="/css/login.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -34,8 +34,13 @@
                 <input id="nameRegister" name="name" required type="text">
             </div>
             <div class="form-group">
-                <label for="picture">Avatar</label>
-                <input accept="image/*" id="pictureRegister" name="picture" required type="file">
+                <label for="pictureRegister">Avatar</label>
+                <div class="avatar-upload">
+                    <label for="pictureRegister" class="avatar-placeholder">
+                        <img id="avatarPreview" src="" alt="Avatar" class="hidden">
+                    </label>
+                    <input id="pictureRegister" name="picture" type="file" accept="image/*" required>
+                </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
