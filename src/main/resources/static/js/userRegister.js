@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const url = "http://localhost:9090/";
+    const url = "https://springouth2client-production.up.railway.app/"
     const formulario = document.querySelector("#registerForm");
     const name = document.querySelector("#nameRegister");
     const email = document.querySelector("#emailRegister");
