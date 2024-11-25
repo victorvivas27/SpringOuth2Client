@@ -1,8 +1,6 @@
 package com.oauth.controller;
 
-import com.amazonaws.auth.policy.Resource;
 import com.oauth.service.AWSS3Service;
-import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,12 +8,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -32,6 +25,7 @@ public class UploadFileController {
     private String bucketName;
     @Value("${aws.s3.region}")
     private String region;
+
     public UploadFileController(AWSS3Service awss3Service) {
         this.awss3Service = awss3Service;
     }

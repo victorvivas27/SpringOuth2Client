@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -24,6 +22,7 @@ public class AWSS3Service implements AWSS3Interface {
     private String bucketName;
     @Value("${aws.s3.region}")
     private String region;
+
     public AWSS3Service(AmazonS3 amazonS3) {
         this.amazonS3 = amazonS3;
     }
