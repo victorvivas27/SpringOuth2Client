@@ -23,7 +23,7 @@ public class ProfileController {
             //System.out.println("Atributos del usuario autenticado en GitHub:");
             //oauth2User.getAttributes().forEach((key, value) -> System.out.println(key + ": " + value));
             Map<String, Object> attributes = oauth2User.getAttributes();
-            String name = (attributes.get("name") != null) ? attributes.get("name").toString() : "Nombre no disponible";
+            String name = (attributes.get("name") != null) ? attributes.get("name").toString() : "";
             String email = (attributes.get("email") != null) ? attributes.get("email").toString() : "";
             String login = (attributes.get("login") != null) ? attributes.get("login").toString() : "";
             String picture = null;

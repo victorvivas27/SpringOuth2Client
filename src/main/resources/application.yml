@@ -41,3 +41,5 @@ aws:
 
 server:
   port: ${PORT:8080}
+profiles:
+    active: local
