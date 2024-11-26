@@ -1,0 +1,9 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            redirect-uri: http://localhost:8080/login/oauth2/code/github
+          google:
+            redirect-uri: http://localhost:8080/login/oauth2/code/google

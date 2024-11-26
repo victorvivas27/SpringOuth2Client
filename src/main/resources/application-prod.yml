@@ -1,0 +1,9 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            redirect-uri: https://springouth2client-production.up.railway.app/login/oauth2/code/github
+          google:
+            redirect-uri: https://springouth2client-production.up.railway.app/login/oauth2/code/google

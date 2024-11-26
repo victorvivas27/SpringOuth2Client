@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 const url = "https://springouth2client-production.up.railway.app/"
-//const url = "http://localhost:8080/"
+const urlLocal = "http://localhost:8080/"
     const formulario = document.querySelector("#registerForm");
     const name = document.querySelector("#nameRegister");
     const email = document.querySelector("#emailRegister");
@@ -45,7 +45,7 @@ const url = "https://springouth2client-production.up.railway.app/"
 
     function realizaRegistro(setting) {
         console.log("Lanzando la consulta a la API");
-        fetch(`${url}register`, setting)
+        fetch(`${url}register||${urlLocal}register`, setting)
             .then(respuesta => {
                 console.log("Código de respuesta:", respuesta.status);  // Ver el código de estado
                 if (!respuesta.ok) {

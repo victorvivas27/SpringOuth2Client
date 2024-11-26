@@ -24,7 +24,7 @@ public class ProfileController {
             //oauth2User.getAttributes().forEach((key, value) -> System.out.println(key + ": " + value));
             Map<String, Object> attributes = oauth2User.getAttributes();
             String name = (attributes.get("name") != null) ? attributes.get("name").toString() : "Nombre no disponible";
-            String email = (attributes.get("email") != null) ? attributes.get("email").toString() : "victorjaviervivas@gmail.com";
+            String email = (attributes.get("email") != null) ? attributes.get("email").toString() : "";
             String login = (attributes.get("login") != null) ? attributes.get("login").toString() : "";
             String picture = null;
             if (attributes.containsKey("picture")) {
