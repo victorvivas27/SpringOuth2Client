@@ -4,7 +4,6 @@
     box-sizing: border-box; /* Incluye borde y padding en el tamaño total */
     font-family: Arial, Helvetica, sans-serif; /* Fuente base */
     line-height: 1.6; /* Altura de línea legible */
-    color: #333; /* Color de texto base */
     scroll-behavior: smooth; /* Desplazamiento suave */
     text-rendering: optimizeLegibility; /* Mejora la legibilidad del texto */
     -webkit-font-smoothing: antialiased; /* Suaviza fuentes en navegadores webkit */
@@ -12,4 +11,62 @@
     user-select: none; /* Evita la selección de texto (opcional) */
     transition: all 0.2s ease-in-out; /* Transiciones suaves para cambios */
     overflow-wrap: break-word; /* Evita desbordamientos de texto */
+    width: 100%;
+}
+
+/* Contenedor principal */
+.placeholder-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #f9f9f9; /* Fondo claro */
+   
+}
+
+/* Sección de contenido */
+.placeholder-section {
+    margin: 3px;
+    text-align: center;
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 2rem;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+  
+}
+
+/* Lista de elementos */
+.placeholder-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las cajas salten a una nueva fila si es necesario */
+    gap: 1rem; /* Espaciado entre las cajas */
+    
+    list-style: none; /* Sin puntos en la lista */
+    justify-content: center;
+}
+
+/* Cajas individuales */
+.placeholder-item {
+    background-color: #4A1F43; /* Fondo principal */
+    color: #fff; /* Texto claro */
+    padding: 1rem;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    width: 320px; /* Ancho fijo */
+    height: 320px; /* Alto fijo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto hover */
+.placeholder-item:hover {
+    background-color: #EAEAEA; /* Fondo claro al pasar el cursor */
+    color: #4A1F43; /* Texto oscuro */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
 }
