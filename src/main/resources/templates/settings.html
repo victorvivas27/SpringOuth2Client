@@ -17,7 +17,7 @@
     <a href="/profile">Perfil</a>
     <a href="/fotos">Fotos</a>
     <a href="/videos">Videos</a>
-    <a href="/settings">Configuración</a>
+    <a href="/settings">Config</a>
     <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
        th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
 </nav>

@@ -10,14 +10,14 @@
     <link href="/css/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+
     <!-- Navbar -->
     <nav class="navbar">
         <a href="/">Inicio</a>
         <a href="/profile">Perfil</a>
         <a href="/fotos">Fotos</a>
         <a href="/videos">Videos</a>
-        <a href="/settings">Configuración</a>
+        <a href="/settings">Config</a>
         <!-- Ternario para Login / Logout -->
         <a th:href="@{${#authentication != null} ? '/logout' : '/signin'}"
            th:text="${#authentication != null} ? 'Iniciar sesión' : 'Cerrar sesión'"></a>
@@ -50,6 +50,6 @@
     <footer class="footer">
         <p>&copy; 2024 Tu Aplicación. Todos los derechos reservados.</p>
     </footer>
-</div>
+
 </body>
 </html>
